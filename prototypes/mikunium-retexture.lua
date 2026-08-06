@@ -26,6 +26,21 @@ for _, replacementPair in ipairs(replacementPairs) do
     replacePrototypeTexture(replacementPair[1], replacementPair[2])
 end
 
+-- Replace animation layers
+local function replaceAnimations(anim)
+    if not anim then return end
+
+    -- Multiple animation layers
+    if anim.layers then
+        for _, layer in ipairs(anim.layers) do
+            replaceAnimations(layer)
+        end
+        -- Single animation layer
+    elseif anim.filename then
+        anim.filename = getNewModPath(anim.filename)
+    end
+end
+
 -- Replace the ore textures
 -- Tried to combine with above but either the ore or items would break
 
@@ -57,20 +72,24 @@ if oreResource then
     oreResource.map_color = mikuColor
     oreResource.mining_visualisation_tint = mikuColor
     local oreResourceSheet = oreResource.stages.sheet
-    oreResourceSheet.filename = getNewModPath(oreResourceSheet.filename)
+    if oreResourceSheet then
+        oreResourceSheet.filename = getNewModPath(oreResourceSheet.filename)
+    end
     if oreResource.stages_effect then
         local oreResourceEffectSheet = oreResource.stages_effect.sheet
-        oreResourceEffectSheet.filename = getNewModPath(oreResourceEffectSheet.filename)
+        if oreResourceEffectSheet then
+            oreResourceEffectSheet.filename = getNewModPath(oreResourceEffectSheet.filename)
+        end
     end
 end
 
 -- Replace centrifuge glow
-
 local centrifugeEntity = data.raw["assembling-machine"]["centrifuge"]
-if centrifugeEntity then
-    local lights = centrifugeEntity["graphics_set"]["working_visualisations"][2].animation.layers
-    for _, light in ipairs(lights) do
-        light.filename = getNewModPath(light.filename)
+if centrifugeEntity and centrifugeEntity.graphics_set and centrifugeEntity.graphics_set.working_visualisations then
+    for _, vis in ipairs(centrifugeEntity.graphics_set.working_visualisations) do
+        if vis.animation then
+            replaceAnimations(vis.animation)
+        end
     end
     -- Was gonna change this too but I think hearing "popipo" on staggered loop 40 times at once would drive me insane
     -- Maybe I'll add it later as an option
