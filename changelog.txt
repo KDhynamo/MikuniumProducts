@@ -1,9 +1,7 @@
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.0
 Date: 08. 08. 2026
-
-Features:
-  - Now uses a color mask for centrifuges for mod compatibility (will need another mod to provide the color mask itself)
-
-Locale:
-  - Polish language support (Thanks to Evilnetr0n07)
+  Features:
+    - Now uses a color mask for centrifuges for mod compatibility (will need another mod to provide the color mask itself)
+  Locale:
+    - Polish language support (Thanks to Evilnetr0n07)
