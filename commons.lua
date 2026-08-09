@@ -2,6 +2,7 @@ modName = "MikuniumProducts"
 modRoot = "__" .. modName .. "__"
 
 mikuColor = { 0.71, 0.902, 0.953 }
+recipeTint = { 0, 0.85, 1 }
 
 replacementPairs = {
 
