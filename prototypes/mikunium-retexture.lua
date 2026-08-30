@@ -83,24 +83,6 @@ if oreResource then
     end
 end
 
--- Replace centrifuge glow
-local centrifugeEntity = data.raw["assembling-machine"]["centrifuge"]
-if centrifugeEntity and centrifugeEntity.graphics_set and centrifugeEntity.graphics_set.working_visualisations then
-    for _, vis in ipairs(centrifugeEntity.graphics_set.working_visualisations) do
-        if vis.animation then
-            replaceAnimations(vis.animation)
-        end
-    end
-    -- Was gonna change this too but I think hearing "popipo" on staggered loop 40 times at once would drive me insane
-    -- Maybe I'll add it later as an option
-    -- local workingSound = centrifugeEntity.working_sound
-    -- if workingSound.sound then
-    --     for _, varation in ipairs(workingSound.sound) do
-    --         varation.filename = getNewModPath(varation.filename)
-    --     end
-    -- end
-end
-
 -- Change the color of the rocket tip for nukes when shot from the rocket launcher
 
 local atomicRocketProjectile = data.raw["projectile"]["atomic-rocket"]

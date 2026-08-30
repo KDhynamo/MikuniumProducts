@@ -1,8 +1,8 @@
 {
   "name": "MikuniumProducts",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "title": "Mikunium Products",
-  "author": "KDhynamo",
+  "author": "KDhynamo, VoldyTheMoldy",
   "homepage": "",
   "contact": "kdhynamo@gmail.com",
   "factorio_version": "2.0",
@@ -10,6 +10,8 @@
     "base >= 2.0",
     "? hatsune-enrichment-process",
     "? RealisticReactorGlow",
+    "? tintable-centrifuges",
+    "? textplates",
     "(?) RealisticOres"
   ],
   "description": "Replace uranium ore, items, and products with Mikunium counterparts. Created to compliment the Hatsune Enrichment Process mod."
